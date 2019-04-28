@@ -30,10 +30,11 @@ class Artist
   end
 
   def self.most_prolific
-    paintings_by_artist = Painting.all.group_by { |painting| painting.artist }
-    paintings_by_artist.each{ |artist, paintings| paintings_by_artist[artist] = (paintings.length)/(artist.years_experience) }
-    return paintings_by_artist.max_by{ |artist, prolif| prolif }[0]
+    @@all.max_by { |artist| (Painting.by_artist(artist).length).to_f/(artist.years_experience)}
   end
 
+  def create_painting(title, price, gallery=nil)
+    Painting.new(title, price, self, gallery)
+  end
 end
 

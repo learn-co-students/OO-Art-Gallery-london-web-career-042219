@@ -25,4 +25,8 @@ class Painting
     return @@all.select { |painting| painting.gallery == gallery }
   end
 
+  def self.total_price
+    @@all.sum{ |painting| painting.price }
+  end
+
 end
