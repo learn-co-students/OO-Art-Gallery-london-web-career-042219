@@ -21,15 +21,21 @@ class Painting
     total.sum
   end
 
-  def self.paintings_hash
-    artists_paintings = {}
-    Painting.all.each do |painting|
-      if artists_paintings[painting]
-        artists_paintings[painting] += 1
-      else
-        artists_paintings[painting] =1
-      end
-    end
-    artists_paintings
+  def self.paintings_hash #works
+    @@all.group_by {|painting| painting.artist}
+    # artists_paintings = {}
+    # Painting.all.each do |painting|
+    #   if artists_paintings[painting]
+    #     artists_paintings[painting] += 1
+    #   else
+    #     artists_paintings[painting] =1
+    #   end
+    # end
+    # artists_paintings
   end
+
+  def self.by_artist
+  end
+
+
 end
